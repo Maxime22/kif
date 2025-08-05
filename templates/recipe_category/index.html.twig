@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RecipeCategoryController!{% endblock %}
+
+{% block body %}
+<a class="btn btn-secondary" href="{{ path('app_recipe') }}">Recipes</a>
+    <h1>Recipe Category</h1>
+   <a class="btn btn-primary" href="{{ path('app_recipe_category_new') }}">New Recipe Category</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Slug</th>
+            <th scope="col">Recipes</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <th scope="row">{{ category.id }}</th>
+            <td>{{ category.name }}</td>
+            <td>{{ category.slug }}</td>
+            <td>
+                {% for recipe in category.recipes %}
+                    {% if not loop.last %}
+                        {{ recipe.name }}, 
+                    {% else %}
+                        {{ recipe.name }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                <a class="btn btn-secondary" href="{{ path('app_recipe_category_edit', {'id': category.id}) }}">Edit</a>
+                <a class="btn btn-danger" href="{{ path('app_recipe_category_delete', {'id': category.id}) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
