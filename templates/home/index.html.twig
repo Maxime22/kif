@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h1>Hello, welcome home</h1>
+    <a class="btn btn-primary" href="{{ path('app_recipe') }}">Recipes</a>
+    <a class="btn btn-primary" href="{{ path('app_recipe_category') }}">Recipe Categories</a>
+    <a class="btn btn-primary" href="{{ path('app_user_edit', {'id': 1}) }}">Edit User Roles</a>
+    <a class="btn btn-secondary" href="{{ path('app_login') }}">Login</a>
+    <a class="btn btn-danger" href="{{ path('app_logout') }}">Logout</a>
+</div>
+{% endblock %}
